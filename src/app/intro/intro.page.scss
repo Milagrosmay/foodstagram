@@ -10,10 +10,19 @@ swiper-container{
     background-color: bisque;
   }
   .titulo1{
-    color:red;
+    color:rgb(79, 4, 4);
   }
   .bg-color-slide{
     background-color: plum;
+  }
+  .bg-color-slide2{
+    background-color: rgb(255, 147, 201);
+  }
+  .bg-color-slide3{
+    background-color: rgb(192, 118, 248);
+  }
+  .bg-color-slide4{
+    background-color: rgb(141, 138, 240);
   }
 .close-icon{
     position: absolute;
@@ -21,4 +30,7 @@ swiper-container{
     right: 10px;
     font-size: 35px;
     color: white;
+}
+img{
+  border-radius: 15px;
 }
