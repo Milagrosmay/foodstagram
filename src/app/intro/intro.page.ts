@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage-angular'; //importamos el storage
 })
 export class IntroPage implements OnInit {
 
-  constructor(private router: Router, 
+  constructor(
+    private router: Router, 
     private storage: Storage //inyectamos el storage
   ) { }
 
@@ -18,7 +19,7 @@ export class IntroPage implements OnInit {
 
   finish(){
     console.log('Finish');
-    this.storage.set('ViLaIntro', true); //guardamos en el storage que ya se ha visto la intro
+    this.storage.set('viLaIntro', true); //guardamos en el storage que ya se ha visto la intro
 
     this.router.navigateByUrl('/home');
   }
