@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
     <ion-item>
       <ion-input label="Email" labelPlacement="floating" placeholder="example@email.com" formControlName="email"></ion-input>
     </ion-item>
@@ -73,7 +73,7 @@
     <ion-button
     type="submit"
     [disabled]="!registerForm.valid"
-    >Login</ion-button>
+    >Register</ion-button>
 
   </form>
 </ion-content>

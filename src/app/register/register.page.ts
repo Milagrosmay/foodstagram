@@ -67,4 +67,9 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  registerUser(registerData: any) {
+    console.log(registerData, "Datos del registro");
+  }
+
+
 }
