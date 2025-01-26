@@ -27,11 +27,11 @@
     </ng-container>
 
     <ion-item>
-      <ion-input label="Apellido" labelPlacement="floating" placeholder="Apellido" formControlName="lastname"></ion-input>
+      <ion-input label="Apellido" labelPlacement="floating" placeholder="Apellido" formControlName="last_name"></ion-input>
     </ion-item>
-    <ng-container *ngFor="let error of formErrors.lastname">
+    <ng-container *ngFor="let error of formErrors.last_name">
       <ion-label color="danger" 
-      *ngIf="(registerForm.get('lastname')?.hasError(error.type) && registerForm.get('lastname')?.dirty)">
+      *ngIf="(registerForm.get('last_name')?.hasError(error.type) && registerForm.get('last_name')?.dirty)">
         {{ error.message }}
       </ion-label>
     </ng-container>
@@ -59,12 +59,12 @@
     </div>
 
     <ion-item>
-      <ion-input type="password" label="Confirmar contraseña" labelPlacement="floating" placeholder="········" formControlName="passwordConfirmation"></ion-input>
+      <ion-input type="password" label="Confirmar contraseña" labelPlacement="floating" placeholder="········" formControlName="password_confirmation"></ion-input>
     </ion-item>
     <div>
-    <ng-container *ngFor="let error of formErrors['passwordConfirmation']">
+    <ng-container *ngFor="let error of formErrors['password_confirmation']">
       <ion-label color="danger" 
-      *ngIf="(registerForm.get('passwordConfirmation')?.hasError(error.type) && registerForm.get('passwordConfirmation')?.dirty)">
+      *ngIf="(registerForm.get('password_confirmation')?.hasError(error.type) && registerForm.get('password_confirmation')?.dirty)">
         {{ error.message }}
       </ion-label>
     </ng-container>

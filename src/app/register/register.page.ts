@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
     name: [
       { type: 'required', message: 'El nombre es obligatorio' }
     ],
-    lastname: [
+    last_name: [
       { type: 'required', message: 'El apellido es obligatorio' }
     ],
     username: [
@@ -30,7 +30,7 @@ export class RegisterPage implements OnInit {
       {type:'required',message:'la contraseña es obligatoria'},
       {type:'minlength',message:'la contraseña debe tener al menos 6 caracteres'}
     ],
-    passwordConfirmation:[
+    password_confirmation:[
       {type:'required',message:'debes confirmar la contraseña'},
       {type:'minlength',message:'la contraseña debe tener al menos 6 caracteres'},
     ]
@@ -50,7 +50,7 @@ export class RegisterPage implements OnInit {
       name: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      lastname: new FormControl('', Validators.compose([
+      last_name: new FormControl('', Validators.compose([
         Validators.required
       ])),
       username: new FormControl('', Validators.compose([
@@ -60,7 +60,7 @@ export class RegisterPage implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ])),
-      passwordConfirmation: new FormControl('', Validators.compose([
+      password_confirmation: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(6)
       ]))
