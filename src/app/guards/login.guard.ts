@@ -2,7 +2,6 @@ import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {Storage} from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
-
 @Injectable({
   providedIn: 'root'
 })

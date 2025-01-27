@@ -9,16 +9,21 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       {
-        path: 'home',
+        path: "home",
         loadChildren: () =>
-          import('../home/home.module').then((m) => m.HomePageModule)
-   }
-  ]
- }
+          import("../home/home.module").then(m => m.HomePageModule)
+      },
+      {
+        path: "account",
+        loadChildren: () =>
+          import("../account/account.module").then(m => m.AccountPageModule)
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MenuPageRoutingModule {}
+export class MenuPageRoutingModule { }

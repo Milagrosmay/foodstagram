@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {register} from 'swiper/element/bundle'; //importamos el registro del swiper 
+import {PostService} from '../services/post.service'; //importamos el servicio de post
 
 register(); //registramos el swiper
 @Component({
@@ -9,7 +10,17 @@ register(); //registramos el swiper
   standalone: false,
 })
 export class HomePage {
+  posts:any;
+  constructor(
+    private postService: PostService
+  ) {}
 
-  constructor() {}
+  ngOnInit(){
+    console.log('Home Page');
+    this.postService.getPosts().then((data:any)=>{
+      console.log(data);
+      this.posts=data;
+    })
+  }
 
 }
