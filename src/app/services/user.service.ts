@@ -5,30 +5,48 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  urlServer= 'http://51.79.26.171';
-  httpHeaders = {headers:new HttpHeaders({'Content-Type': 'application/json'})};
+  urlServer = 'http://51.79.26.171';
+  httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getUser(id: any){
-    return new Promise((accept,reject)=>{
-      this.http.get(`${this.urlServer}/current_user/${id}`, this.httpHeaders).subscribe(	
-        (data:any)=>{
-            accept(data);
+  getUser(id: any) {
+    return new Promise((accept, reject) => {
+      this.http.get(`${this.urlServer}/current_user/${id}`, this.httpHeaders).subscribe(
+        (data: any) => {
+          accept(data);
         },
-        (error)=>{
+        (error) => {
           console.log(error, 'error');
-         if(error.status==500){
+          if (error.status == 500) {
             reject('Error por favor intente más tarde');
-          }else{
+          } else {
             reject('error al obtener el usuario');
           }
         }
       )
     });
-
-
+  }
+  updateUser(user: any) {
+    const user_params={
+      user:user
+    }
+    return new Promise((accept, reject) => {
+      this.http.post(`${this.urlServer}/update/${user.id}`, user_params, this.httpHeaders).subscribe(
+        (data: any) => {
+          accept(data);
+        },
+        (error) => {
+          console.log(error, 'error');
+          if (error.status == 500) {
+            reject('Error por favor intente más tarde');
+          } else {
+            reject('error al actualizar el usuario');
+          }
+        }
+      )
+    });
   }
 }
