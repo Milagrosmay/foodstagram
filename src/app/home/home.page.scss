@@ -1,25 +1,37 @@
-swiper-container{
-  width:100%;
+swiper-container {
+  width: 100%;
   height: 100%;
 }
-swiper-slide{
+
+swiper-slide {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: bisque;
 }
-.titulo1{
-  color:red;
+
+.titulo1 {
+  color: red;
 }
-.bg-color-slide{
+
+.bg-color-slide {
   background-color: plum;
 }
-.user-avatar{
-  width:30px; 
-  height:30px;
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
 }
-.image-post{
+
+.image-post {
   margin: 0 auto;
   display: block;
+}
+
+ion-fab {
+  ion-fab-button {
+   --background : #8a42e7;
+   --color: rgb(255, 255, 255);
+  }
 }

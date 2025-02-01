@@ -70,7 +70,7 @@ export class AuthService {
         (error)=>{
           console.log(error);
           if(error.status==422){
-            reject(error.error.error);
+            reject('error');
           }else if(error.status==500){
             reject('Error por favor intente más tarde');
           }else{
