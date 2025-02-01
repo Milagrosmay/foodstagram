@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'add-post-modal',
     loadChildren: () => import('./add-post-modal/add-post-modal.module').then( m => m.AddPostModalPageModule)
+  },
+  {
+    path: 'edit-profile-modal',
+    loadChildren: () => import('./edit-profile-modal/edit-profile-modal.module').then( m => m.EditProfileModalPageModule)
   }
 ];
 

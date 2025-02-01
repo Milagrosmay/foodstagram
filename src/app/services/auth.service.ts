@@ -5,80 +5,78 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  urlServer= 'http://51.79.26.171';
-  httpHeaders = {headers:new HttpHeaders({'Content-Type': 'application/json'})};
+  urlServer = 'http://51.79.26.171';
+  //urlServer = 'http://localhost:3000';
+  httpHeaders = { headers: new HttpHeaders({"Content-Type": "application/json"})};
 
   constructor(
     private http: HttpClient
   ) { }
 
-
-  login(credentials:any){
-    return new Promise((accept,reject)=>{
-      let params={
-        "user":{
-          "email":credentials.email,
-          "password":credentials.password
+  login(credentials: any){
+    return new Promise((accept, reject) => {
+      let params = {
+        "user": { 
+          "email": credentials.email, 
+          "password": credentials.password
          }
       }
       this.http.post(`${this.urlServer}/login`, params, this.httpHeaders).subscribe(
-        (data:any)=>{
+        (data: any)=>{
           console.log(data);
-          if(data.status=='OK'){
+          if (data.status == 'OK'){
             accept(data);
           }else{
+            
             reject(data.errors);
           }
         },
-        (error)=>{
+        (error) => {
           console.log(error);
-          if(error.status==401){
+          if (error.status == 422){
             reject('Usuario o contraseña incorrectos');
-          }else if(error.status==500){
-            reject('Error por favor intente más tarde');
+          } else if (error.status == 500){
+            reject('Error Porfavor intenta mas tarde');
           }else{
-            reject('error al intentar iniciar sesión');
+            reject('Error al intentar iniciar sesión');
           }
         }
-     
-        )
-      
+      )
     });
   }
-  register(data:any){
-    return new Promise((accept, reject)=>{
-      let params={
-        "user":{
-          "email":data.email,
-          "password":data.password,
-          "password_confirmation":data.password_confirmation,
-          "name":data.name,
-          "last_name":data.last_name,
-          "username":data.username
-          
+
+  register(data: any){
+    return new Promise((accept, reject) => {
+      let params = {
+        "user": {
+          "email": data.email,
+          "password": data.password,
+          "password_confirmation": data.password_confirmation,
+          "name": data.name,
+          "last_name": data.last_name,
+          "username": data.username
         }
       }
       this.http.post(`${this.urlServer}/signup`, params, this.httpHeaders).subscribe(
-        (data:any)=>{
+        (data: any)=>{
           console.log(data);
-          if(data.status=='OK'){
+          if (data.status == 'OK'){
             accept(data);
           }else{
             reject(data.errors);
           }
         },
-        (error)=>{
+        (error) => {
           console.log(error);
-          if(error.status==422){
-            reject('error');
-          }else if(error.status==500){
-            reject('Error por favor intente más tarde');
+          if (error.status == 422){
+            reject(error.error.errors);
+          } else if (error.status == 500){
+            reject('Error Porfavor intenta mas tarde');
           }else{
-            reject('error al intentar registrarse');
+            reject('Error al intentar registrarse');
           }
         }
-     
-        )
-      });
+      )
+    });
   }
 }

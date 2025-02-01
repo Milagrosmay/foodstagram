@@ -3,6 +3,9 @@ import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import {defineCustomElements} from '@ionic/pwa-elements/loader';
+import { NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
 defineCustomElements(window);
 
 @Component({
@@ -16,12 +19,16 @@ export class AccountPage implements OnInit {
     name: '',
     email: '',
     image: '',
+    username:'',
     followed_users: [],
     following_users: []
   };
   constructor(
     private userService: UserService,
-    private storage: Storage
+    private storage: Storage,
+    private navCtrl: NavController,
+    private modalController: ModalController
+
   ) { }
 
   async ngOnInit() {
@@ -50,6 +57,8 @@ export class AccountPage implements OnInit {
     this.user_data.image = capturedPhoto.dataUrl;
     this.update();
   }
+  
+
 
   async update() {
     this.userService.updateUser(this.user_data).then(
@@ -61,5 +70,18 @@ export class AccountPage implements OnInit {
         console.log(error);
       });
   }
+  async editar() {
+      console.log('Edit profile');
+      const modal = await this.modalController.create({
+        component: EditProfileModalPage,
+        componentProps: {}
+      });
+      return await modal.present();
+    }
+ 
+  
+  
+
+
 
 }

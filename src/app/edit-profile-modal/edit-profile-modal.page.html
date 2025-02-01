@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-icon name="close" class="close-icon" (click)="cedit()"></ion-icon>
+
+  <form [formGroup]="editProfileForm" (ngSubmit)="updateUser(editProfileForm.value)">
+    
+    <!-- Foto de perfil -->
+    <ion-avatar (click)="takePhoto()">
+      <img [src]="user_data.image? user_data.image: 'assets/img/default-avatar.png'"/>
+    </ion-avatar>
+    <div>
+      <ng-container *ngFor="let error of formErrors.image">
+        <ion-label color="danger" *ngIf="(editProfileForm.get('image')?.hasError(error.type))">
+          {{ error.message }}
+        </ion-label>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="floating" placeholder="Nombre" formControlName="name"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let error of formErrors.name">
+      <ion-label color="danger"
+        *ngIf="(editProfileForm.get('name')?.hasError(error.type) && editProfileForm.get('name')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+
+    <ion-item>
+      <ion-input label="Apellido" labelPlacement="floating" placeholder="Apellido"
+        formControlName="last_name"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let error of formErrors.last_name">
+      <ion-label color="danger"
+        *ngIf="(editProfileForm.get('last_name')?.hasError(error.type) && editProfileForm.get('last_name')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+      <ion-button type="submit" [disabled]="!editProfileForm.valid" expand="full">
+        Guardar Cambios
+      </ion-button>
+  
+
+  </form>
+</ion-content>
