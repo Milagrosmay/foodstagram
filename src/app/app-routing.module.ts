@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'edit-profile-modal',
     loadChildren: () => import('./edit-profile-modal/edit-profile-modal.module').then( m => m.EditProfileModalPageModule)
+  },
+  {
+    path: 'search-users',
+    loadChildren: () => import('./search-users/search-users.module').then( m => m.SearchUsersPageModule)
   }
 ];
 

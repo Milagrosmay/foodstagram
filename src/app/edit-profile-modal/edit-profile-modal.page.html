@@ -10,16 +10,9 @@
   <form [formGroup]="editProfileForm" (ngSubmit)="updateUser(editProfileForm.value)">
     
     <!-- Foto de perfil -->
-    <ion-avatar (click)="takePhoto()">
+    <ion-avatar (click)="presentphotoOptions()">
       <img [src]="user_data.image? user_data.image: 'assets/img/default-avatar.png'"/>
     </ion-avatar>
-    <div>
-      <ng-container *ngFor="let error of formErrors.image">
-        <ion-label color="danger" *ngIf="(editProfileForm.get('image')?.hasError(error.type))">
-          {{ error.message }}
-        </ion-label>
-      </ng-container>
-    </div>
 
     <ion-item>
       <ion-input label="Nombre" labelPlacement="floating" placeholder="Nombre" formControlName="name"></ion-input>

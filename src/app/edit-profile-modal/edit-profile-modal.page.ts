@@ -5,6 +5,9 @@ import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, FormControl, Validators, MinLengthValidator } from '@angular/forms'; //importamos el formbuilder
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { AuthService } from '../services/auth.service';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+defineCustomElements(window)
 
 @Component({
   selector: 'app-edit-profile-modal',
@@ -25,9 +28,6 @@ export class EditProfileModalPage implements OnInit {
     following_users: []
   };
   formErrors = {
-    image: [
-      { type: 'required', message: 'la imagen es obligatoria' }
-    ],
     name: [
       { type: 'required', message: 'La descripción es obligatoria' },
     ],
@@ -37,22 +37,19 @@ export class EditProfileModalPage implements OnInit {
     
   };
 
-
   constructor(
     private formBuilder: FormBuilder,
     private userService:UserService,
     private storage: Storage,
     private modalController: ModalController, 
     private authService: AuthService,
+    private alertController: AlertController
   ) {
     this.editProfileForm = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required
       ])),
       last_name: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      image: new FormControl('', Validators.compose([
         Validators.required
       ]))
     })
@@ -79,16 +76,15 @@ export class EditProfileModalPage implements OnInit {
     this.user_data.last_name=registerData.last_name;
     this.update();
   }
-  async takePhoto() {
+  async takePhoto(source:CameraSource) {
     console.log("take photo");
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera,
+      source: source,
       quality: 100
     });
     console.log(capturedPhoto.dataUrl);
     this.user_data.image = capturedPhoto.dataUrl;
-    this.editProfileForm.patchValue({ image: capturedPhoto.dataUrl });
     this.update();
   }
   async update() {
@@ -105,5 +101,33 @@ export class EditProfileModalPage implements OnInit {
     this.modalController.dismiss();
     location.reload();
   }
+  async presentphotoOptions() {
+    const alert = await this.alertController.create({
+    header: 'Selecciona una opción',
+    message: '¿De dónde quieres obtener la imagen?',
+    buttons:[
+      {
+        text: "camara",
+        handler: () => {
+          this.takePhoto(CameraSource.Camera);
+        }
+      },
+      {
+        text: "Galeria",
+        handler: () => {
+          this.takePhoto(CameraSource.Photos);
+        }
+      },
+      {
+        text: "Cancelar",
+        role: "cancel",
+        handler: () => {
+          console.log("cancelar");
+        }
+      }
+    ]
+    });
+    await alert.present();
+    }
 
 }

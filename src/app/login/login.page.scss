@@ -1,0 +1,113 @@
+ion-content {
+    --background: #f1d2ff;
+    --padding-top: 2rem;
+    --padding-bottom: 2rem;
+  }
+  
+  /* Título */
+  ion-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  /* Contenedor de la imagen */
+  figure {
+    margin: 2rem auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.922);
+    background: rgb(156, 34, 255);
+    padding: 0.5rem;
+  }
+  
+  /* Imagen de avatar */
+  figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Formulario */
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgb(232, 193, 255);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Items del formulario */
+  ion-item {
+    --background: transparent;
+    --border-color: #ffffff;
+    --border-radius: 8px;
+    --padding-start: 0;
+    margin-bottom: 1rem;
+  }
+  
+  /* Inputs */
+  ion-input {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --background: #f8f9fa;
+    --border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  
+  /* Mensajes de error */
+  ion-label[color="danger"] {
+    font-size: 0.8rem;
+    margin: 0.25rem 0 1rem 1rem;
+    display: block;
+  }
+  
+  /* Botones */
+  ion-button {
+    --background: #9d00ffd6;
+    --background-hover: #e19bff;
+    --border-radius: 8px;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  ion-button[disabled] {
+    --background: #000000;
+    opacity: 0.7;
+  }
+  
+  /* Botón de registro */
+  ion-button[routerLink] {
+    --background: #9d00ffd6;
+    --background-hover: #5a6268;
+    margin-top: 1rem;
+  }
+  
+  /* Mensaje de error */
+  p {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    form {
+      margin: 0 1rem;
+      padding: 1.5rem;
+    }
+    
+    ion-title {
+      font-size: 1.75rem;
+    }
+  }

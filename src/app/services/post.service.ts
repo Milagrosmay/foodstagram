@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -6,13 +6,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class PostService {
   urlServer = 'http://51.79.26.171';
-  httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  httpHeaders = { headers: new HttpHeaders({ "Content-Type": "application/json" }) };
 
+  postcreated: EventEmitter<any> = new EventEmitter();
   constructor(
     private http: HttpClient
   ) { }
 
-  getPosts(page:number, perPage:number) {
+  getPosts(page: number, perPage: number) {
     return new Promise((accept, reject) => {
       this.http.get(`${this.urlServer}/posts?page=$(page)&per_page=$(perPage)`, this.httpHeaders).subscribe(
         (data: any) => {
@@ -34,18 +35,19 @@ export class PostService {
       this.http.post(`${this.urlServer}/posts`, post_data, this.httpHeaders).subscribe(
         (data: any) => {
           accept(data);
-        },
-        (error) => {
-          console.log(error, 'error');
-          if (error.status == 500) {
-            reject('Error por favor intente más tarde');
-          } else {
-            reject('error al crear el Post');
-          }
+        this.postcreated.emit(data);
+    },
+      (error) => {
+        console.log(error, 'error');
+        if (error.status == 500) {
+          reject('Error Porfavor intenta mas tarde');
+        } else {
+          reject('Error al crear el Post');
         }
-      )
-    });
+      }
+    )
+  });
 
-  }
+}
 }
 

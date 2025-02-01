@@ -1,0 +1,117 @@
+/* Split pane styles */
+ion-split-pane {
+    --side-width: 280px;
+}
+
+/* Menu styles */
+ion-menu {
+    background: #db77ff;
+    box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu toolbar styles */
+ion-menu ion-toolbar {
+    background: #3880ff;
+    color: #ffffff;
+    padding: 8px;
+}
+
+ion-menu ion-title {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 16px;
+    color:#000000;
+}
+
+/* Menu items styles */
+ion-menu ion-item {
+    margin: 8px 12px;
+    border-radius: 8px;
+    --background: transparent;
+    --background-hover: #f4f5f8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+ion-menu ion-item:hover {
+    background: #f4f5f8;
+    transform: translateX(4px);
+}
+
+/* Menu item icons */
+ion-menu ion-item ion-icon {
+    color: #6c00ef;
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+/* Menu close button */
+ion-menu ion-button {
+    color: #000000;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+ion-menu ion-button:hover {
+    opacity: 1;
+}
+
+/* Menu content styles */
+ion-menu ion-content {
+    --background: #ffffff;
+    --padding-top: 16px;
+}
+
+/* Specific item styles */
+ion-menu ion-item[click="log_out"] {
+    color: #d6a5ff;
+}
+
+ion-menu ion-item[click="log_out"] ion-icon {
+    color: #ff4961;
+}
+
+/* Add a subtle border between items */
+ion-menu ion-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Animation for menu items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+ion-menu ion-item {
+    animation: slideIn 0.3s ease-out forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+}
+
+
+ion-menu ion-item:nth-child(1) { --index: 1; }
+ion-menu ion-item:nth-child(2) { --index: 2; }
+ion-menu ion-item:nth-child(3) { --index: 3; }
+ion-menu ion-item:nth-child(4) { --index: 4; }
+
+/* Active state for menu items */
+ion-menu ion-item.active {
+    background: rgba(56, 128, 255, 0.1);
+    font-weight: 500;
+}
+
+/* Router outlet styles */
+ion-router-outlet {
+    background: #f4f5f8;
+}

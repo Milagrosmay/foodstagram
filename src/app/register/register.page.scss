@@ -1,0 +1,119 @@
+ion-content {
+    --background: #e4ceff;
+    --padding-top: 2rem;
+    --padding-bottom: 2rem;
+  }
+  
+  ion-toolbar {
+    --background: #9c33ff;
+  }
+  
+  ion-toolbar ion-title {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  form {
+    max-width: 450px;
+    margin: 1.5rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: #ddd;
+    --border-radius: 8px;
+    --padding-start: 0;
+    margin-bottom: 0.5rem;
+    --highlight-color: #8873da;
+  }
+  
+  /* Inputs */
+  ion-input {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --background: #f8f9fa;
+    --border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  
+  ion-input.ion-invalid.ion-touched {
+    --border-color: #dc3545;
+  }
+  
+  ion-input.ion-valid.ion-touched {
+    --border-color: #28a745;
+  }
+  
+  /* Labels flotantes */
+  ion-input[label] {
+    --color: #000000;
+  }
+  
+  /* Mensajes de error */
+  ion-label[color="danger"] {
+    font-size: 0.8rem;
+    margin: 0.25rem 0 0.75rem 1rem;
+    display: block;
+    font-weight: 400;
+  }
+  
+  /* Contenedor de mensajes de error */
+  div {
+    margin-bottom: 1rem;
+  }
+  
+  /* Botón de registro */
+  ion-button {
+    --background: #9d00ffd6;
+    --background-hover: #e19bff;
+    --border-radius: 8px;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    margin: 1.5rem 0 0.5rem 0;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 48px;
+  }
+  
+  ion-button[disabled] {
+    --background: #cccccc;
+    opacity: 0.7;
+  }
+  
+  /* Animaciones */
+  ion-item, ion-button {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    form {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+  
+    ion-item {
+      margin-bottom: 0.25rem;
+    }
+  
+    ion-button {
+      margin-top: 1rem;
+    }
+  }
+  
+  /* Estados hover */
+  ion-item:hover {
+    --border-color: #000000;
+  }
+  
+  /* Estilo para campos agrupados (contraseña y confirmación) */
+  ion-item + ion-item {
+    margin-top: 0.5rem;
+  }

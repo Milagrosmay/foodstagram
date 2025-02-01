@@ -1,0 +1,136 @@
+/* Header styles */
+ion-header ion-toolbar {
+    background: #943cff;
+    color: #cea6f6;
+    padding: 8px 0;
+}
+
+ion-header ion-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+ion-menu-button {
+    color: #000000;
+}
+
+/* Search bar styles */
+ion-searchbar {
+    padding: 12px;
+    --background: #f8f9fa;
+    --border-radius: 12px;
+    --box-shadow: none;
+    --placeholder-color: #666666;
+    --icon-color: #a200ff;
+}
+
+/* List styles */
+ion-list {
+    padding: 8px;
+}
+
+/* Item styles */
+ion-item {
+    margin: 8px 0;
+    border-radius: 12px;
+    --background: #eccfff;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar styles */
+ion-avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+}
+
+ion-avatar img {
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styles */
+ion-label h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    margin: 0;
+}
+
+/* Button styles */
+ion-button {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    background: white;
+    --background-hover: rgba(205, 4, 255, 0.1);
+    --ripple-color: rgba(56, 128, 255, 0.2);
+}
+
+ion-button ion-icon {
+    font-size: 20px;
+    background: #8546ea;
+}
+
+/* Animation for list items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ion-item {
+    animation: fadeInUp 0.3s ease-out forwards;
+    animation-delay: calc(var(--index) * 0.05s);
+}
+
+/* Add animation delays for items */
+ion-item:nth-child(1) { --index: 1; }
+ion-item:nth-child(2) { --index: 2; }
+ion-item:nth-child(3) { --index: 3; }
+ion-item:nth-child(4) { --index: 4; }
+ion-item:nth-child(5) { --index: 5; }
+
+/* Heart icon animations */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+ion-button ion-icon {
+    transition: color 0.3s ease;
+}
+
+ion-button:active ion-icon {
+    animation: heartBeat 0.3s ease-in-out;
+}
+
+/* Active heart state */
+ion-button ion-icon[name="heart-dislike-outline"] {
+    color: #ff4961;
+}
+
+/* Content background */
+ion-content {
+    --background: #ebcbf6;
+}
+
+/* Empty state message if needed */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666666;
+}

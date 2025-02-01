@@ -6,6 +6,9 @@ import {defineCustomElements} from '@ionic/pwa-elements/loader';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
+import { AlertController } from '@ionic/angular';
+import { h } from 'ionicons/dist/types/stencil-public-runtime';
+
 defineCustomElements(window);
 
 @Component({
@@ -20,14 +23,15 @@ export class AccountPage implements OnInit {
     email: '',
     image: '',
     username:'',
-    followed_users: [],
-    following_users: []
+    followees_users: [],
+    followers_users: []
   };
   constructor(
     private userService: UserService,
-    private storage: Storage,
     private navCtrl: NavController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private storage: Storage,
+    public alertController: AlertController
 
   ) { }
 
@@ -46,11 +50,11 @@ export class AccountPage implements OnInit {
       });
 
   }
-  async takePhoto() {
+  async takePhoto(source: CameraSource) {
     console.log("take photo");
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera,
+      source: source,
       quality: 100
     });
     console.log(capturedPhoto.dataUrl);
@@ -70,6 +74,9 @@ export class AccountPage implements OnInit {
         console.log(error);
       });
   }
+
+  
+
   async editar() {
       console.log('Edit profile');
       const modal = await this.modalController.create({
@@ -78,6 +85,36 @@ export class AccountPage implements OnInit {
       });
       return await modal.present();
     }
+
+    async presentphotoOptions() {
+      const alert = await this.alertController.create({
+      header: 'Selecciona una opción',
+      message: '¿De dónde quieres obtener la imagen?',
+      buttons:[
+        {
+          text: "camara",
+          handler: () => {
+            this.takePhoto(CameraSource.Camera);
+          }
+        },
+        {
+          text: "Galeria",
+          handler: () => {
+            this.takePhoto(CameraSource.Photos);
+          }
+        },
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: () => {
+            console.log("cancelar");
+          }
+        }
+      ]
+      });
+      await alert.present();
+      }
+      
  
   
   
